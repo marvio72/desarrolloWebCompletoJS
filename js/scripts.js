@@ -1,18 +1,8 @@
-// Switch Statement
+//Fechas
 
-const metodoPago = 'tarjeta';
-
-switch (metodoPago) {
-    case 'efectivo':
-        console.log(`Pagaste con ${metodoPago}`);
-        break;
-    case 'cheque':
-    console.log(`Pagaste con ${metodoPago} revisaremos que tenga fondos`);
-        break;
-    case 'tarjeta':
-    console.log(`Pagaste con ${metodoPago} espere un momento...`);
-        break;
-    default:
-        console.log(`Aún no has gagado o método no válido`);
-        break;
-}
+const diaHoy = new Date();
+let dia = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+let meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+let valor = `${dia[diaHoy.getDay() - 1]}, ${diaHoy.getDate()} de ${meses[diaHoy.getMonth()]} del ${diaHoy.getFullYear()}`;
+console.log(diaHoy);
+console.log(valor);
