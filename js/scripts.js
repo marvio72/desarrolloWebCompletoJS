@@ -1,58 +1,46 @@
-// METODOS O FUNCIONES DENTRO DE LOS OBJETOS
-let song = 'Cuando calienta el Sol';
-const musica = {
-    reproducir: function (cancion) {
-        // console.log(`Reproduciendo la canción : ${cancion}`);
-        return (`Reproduciendo la canción : ${cancion}`);
-    },
-    pausar: function () {
-        console.log('paused...');
+//Object literal
+
+const persona = {
+    nombre: 'Marco',
+    edad: 47,
+    anioNacimiento: function () {
+        return new Date().getFullYear() - this.edad;
     }
 }
-let rola = musica.reproducir(song);
-// los métodos también pueden ir por fuera
-musica.borrar = function (id) {
-    // console.log(`Borrando la cancion con el ID: ${id}`);
-    return `Borrando la cancion con el ID: ${id}`;
+
+console.log(persona.anioNacimiento());
+
+
+function Tarea(nombre, urgencia) {
+    this.nombre = nombre;
+    this.urgencia = urgencia;
 }
-let borra = musica.borrar(283)
-const contenedorApp = document.querySelector('#mensaje');
-let html = `<h2> ${borra} </h2>
-            <br>
-            <p> ${rola} </p>`;
-contenedorApp.innerHTML = html;
+//Instancias son como un cuaderno, todas las hojas son iguales pero
+// tienen diferente contenido.
+//Tareas
+const tarea1 = new Tarea('Estudiar JavaScript', 'Urgente');
+const tarea2 = new Tarea('Sacar a pasear a Kiara', 'Urgente');
+const tarea3 = new Tarea('Preparar café', 'Media');
+const tarea4 = new Tarea('Conocer a mis tias', '0');
+console.log(tarea1);
+console.log(tarea2);
+console.log(tarea3);
+console.log(tarea4);
 
-
-console.log(musica.reproducir('Hotel California'));;
-musica.pausar();
-musica.reproducir('Nothing Else Matters');
-musica.borrar(212);
-
-
-
-//Arrow Function
-const suma = (a = 0, b = 0) => a + b; //es lo mismo que
-// const suma = (a = 0, b = 0) function(a,b){
-//     return a + b
-// } 
-const multiplicar = a => a * 5;
-let total;
-let resultadoSuma = suma(2, 2);
-total = multiplicar(resultadoSuma)
-console.log(total);
-
-
-const viajando = function (destino) {
-    return `Viajando a la ciudad de ${destino}`;
+console.log('----------------------------------------------');
+//Object Constructor
+class Tareas {
+    constructor(nombre, urgencia) {
+        this.nombre = nombre;
+        this.urgencia = urgencia;
+    }
 }
-let viaje;
-viaje = viajando('Londres');
-viaje = viajando('Paris');
-console.log(viaje);
 
-//Esto es lo mismo
-const viajando1 = destino => `Viajando a la ciudad de ${destino}`;
-let viaje1;
-
-viaje1 = viajando1('Marruecos');
-console.log(viaje1);
+const tareas1 = new Tareas('Estudiar JavaScript', 'Urgente');
+const tareas2 = new Tareas('Sacar a pasear a Kiara', 'Urgente');
+const tareas3 = new Tareas('Preparar café', 'Media');
+const tareas4 = new Tareas('Conocer a mis tias', '0');
+console.log(tareas1);
+console.log(tareas2);
+console.log(tareas3);
+console.log(tareas4);
