@@ -1,21 +1,48 @@
-//Scope la visivilidad de una variable
-// para tener mejor control de las variables se recomienda usar let y const en lugar de var
+// Destructuring
 
-console.log('Con var');
-var musica = 'Rock';
-
-if (musica) {
-    var musica = 'Grunge';
-    console.log(`Dentro del if ${musica}`);
+const cliente = {
+    nombre: 'Alejandra',
+    tipo  : 'Premium',
+    datos: {
+        ubicacion: {
+            ciudad: 'México',
+            pais: 'México'
+        },
+        cuenta: {
+            desde: 12-12-2012,
+            saldo: 4000
+        }
+    },
+    gustos: {
+        musica:['trance','rock']
+    }
 }
-console.log(`Fuera de if ${musica}`);
+// Ver el contenido del objeto
+console.log(cliente);
+
+//mostrar el valor de cada elemento forma antigua
+const nombreCliente = cliente.nombre,
+      tipoCliente = cliente.tipo,
+      ubicacionCliente = cliente.datos.ubicacion;
+
+console.log(ubicacionCliente);
+
+//nueva manera de mostrar los valores de cada elemento
+console.log('              Nueva manera');
+let {nombre,tipo} = cliente;
+let {datos: {ubicacion}} = cliente;
+console.log(`${nombre} ${tipo}`);
+console.log(ubicacion);
+
+console.log('Mostrar ciudad');
+let { datos: { ubicacion: {ciudad} } } = cliente;
+console.log(ciudad);
+
+console.log('Extraer el saldo');
+let {datos:{cuenta:{saldo}}} = cliente;
+console.log(saldo);
+
+let {gustos: musica} = cliente;
 
 
-console.log('Con let');
-let musica1 = 'Rock';
-
-if (musica1) {
-    let musica1 = 'Grunge';
-    console.log(`Dentro del if ${musica1}`);
-}
-console.log(`Fuera de if ${musica1}`);
+console.log(musica);
