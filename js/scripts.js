@@ -1,34 +1,28 @@
-//Filter .find y .reduce
+//FETCH API
 
-const personas = [
-    { nombre: 'Marco', edad:46 },
-    { nombre: 'Alejandra', edad: 23, aprendiendo: 'JavaScript' },
-    { nombre: 'Pedro', edad: 60 },
-    { nombre: 'Alfonso', edad: 32 },
-    { nombre: 'Josefina', edad: 18 }
-];
+descargarUsuarios(30);
 
-console.table(personas);
+function descargarUsuarios(cantidad) {
+    const api = `https://api.randomuser.me/?nat=US&results=${cantidad}`;
 
-//obtener las personas mayores de 25 años
+    // llamado a Fetch
+    fetch(api)
+        .then(respuesta => respuesta.json() )
+        .then(datos => imprimirHTML(datos.results) );
 
-const mayores = personas.filter(persona =>{
-    return persona.edad > 25
-})
-console.table(mayores);
-//forma compacta
-const mayores1 = personas.filter(persona => persona.edad > 25);
-console.table(mayores1);
+}
 
-//información de Alejandra
-const alejandra = personas.find(persona => persona.nombre === 'Alejandra');
-console.log(alejandra);
-
-let {aprendiendo} = alejandra;
-console.log(aprendiendo);
-
-//Reduce
-let total = personas.reduce((edadTotal,persona)=> {
-    return edadTotal + persona.edad;
-}, 0);
-console.log(total/personas.length);
+function imprimirHTML(datos) {
+    datos.forEach(usuario => {
+        const li = document.createElement('li');
+        const {name:{first}, name:{last}, picture:{medium}, nat} = usuario;
+        li.innerHTML = ` 
+            Nombre: ${first} ${last}  
+            Pais: ${nat}
+            imagen: <img src="${medium}">
+        
+        
+        `
+        document.querySelector('#app').appendChild(li);
+    });
+}
