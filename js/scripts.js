@@ -1,30 +1,86 @@
-//loops
+//Iteradores
 
-//For loop
+const pendientes = ['Tarea','Comer','Proyecto','Estudiar JavaScript'];
 
-for (let i = 0; i <= 10; i++) {
-    console.log(` Numero: ${i}`);
+//Un arreglo con objetos
+const carrito = [
+    {id: 1, producto: 'Libro'},
+    {id: 2, producto: 'Camisa'},
+    {id: 3, producto: 'Disco' }
+];
+
+//Un objeto
+let automovil = {
+    modelo: 'Camaro',
+    motor : 6.0,
+    anio  : 1987,
+    marca : 'Chevrolet'
 }
 
-const carrito = ['producto 1', 'producto 2', 'producto 3'];
-console.log(carrito.length);
-
-for (let x = 0; x < carrito.length; x++) {
-    const producto = carrito[x];
-    console.log(`Producto en el carrito: ${producto}`);    
+for (let i = 0; i < pendientes.length; i++) {
+    console.log(pendientes[i]);
 }
 
-//While loop
-let i = 11;
-while (i < carrito.length) {
-    console.log(`Producto en el carrito: ${carrito[i]}`);
-    i++;
+//otra manera de realizar un for 
+// pendiente es como la variable y pendientes es el arreglo
+for(pendiente of pendientes){
+    console.log(pendiente);
 }
 
-//Do Wile 
-//Ese loop realiza la operación por lo menos una vez
+for(producto of carrito){
+    console.log(`${producto.id}: ${producto.producto}`);
+}
 
-do {
-    console.log(i);
-    i++;
-} while (i < 10);
+for(info of Object.values(automovil)){
+    console.log(info);
+}
+
+// foreach
+pendientes.forEach(function (labor) {
+    console.log(labor);
+})
+console.log('--------------------------------');
+// foreach con arrow function
+pendientes.forEach(labor => {
+    console.log(labor);
+})
+
+// diferencia entre foreach y Map
+// map crea una copia foreach no
+
+let nuevoArreglo = pendientes.forEach(labor => {
+
+});
+
+let nuevoArreglo2 = pendientes.map(labor => {
+    return labor;
+});
+
+// otra forma
+let nuevoArreglo3 = pendientes.map(labor => labor);
+
+console.log(nuevoArreglo);
+console.log(nuevoArreglo2);
+console.log(nuevoArreglo3);
+
+let nuevoArreglo4 = carrito.map(producto => producto.producto);
+let nuevoArreglo5 = carrito.map(producto => {
+    return producto.producto;
+})
+
+
+
+console.log(nuevoArreglo4);
+console.log(nuevoArreglo5);
+console.log('___________________________________________');
+
+// Ingresar a los datos de un objeto
+Object.values(automovil).forEach(info => {
+    console.log(info);
+});
+
+
+Object.values(automovil).map(info => {
+    console.log(info);
+});
+
