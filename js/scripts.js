@@ -1,19 +1,34 @@
-//Object Literal Enhacement
+//Filter .find y .reduce
 
-const banda = 'Metallica',
-      genero = 'Heavy Metal',
-      canciones = ['Master of Puppets','Seek & Destroy','Enter Sandman'];
+const personas = [
+    { nombre: 'Marco', edad:46 },
+    { nombre: 'Alejandra', edad: 23, aprendiendo: 'JavaScript' },
+    { nombre: 'Pedro', edad: 60 },
+    { nombre: 'Alfonso', edad: 32 },
+    { nombre: 'Josefina', edad: 18 }
+];
 
-//Forma anterior
-const metallica ={
-    banda: banda,
-    genero: genero,
-    canciones: canciones
-}
+console.table(personas);
 
-console.log(metallica);
+//obtener las personas mayores de 25 años
 
-//Nueva forma
-const metallica1 = {banda,genero,canciones}
+const mayores = personas.filter(persona =>{
+    return persona.edad > 25
+})
+console.table(mayores);
+//forma compacta
+const mayores1 = personas.filter(persona => persona.edad > 25);
+console.table(mayores1);
 
-console.log(metallica1);
+//información de Alejandra
+const alejandra = personas.find(persona => persona.nombre === 'Alejandra');
+console.log(alejandra);
+
+let {aprendiendo} = alejandra;
+console.log(aprendiendo);
+
+//Reduce
+let total = personas.reduce((edadTotal,persona)=> {
+    return edadTotal + persona.edad;
+}, 0);
+console.log(total/personas.length);
