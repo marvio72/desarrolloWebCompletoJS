@@ -1,4 +1,4 @@
-// Shitch statment
+// Switch Statement
 
 const metodoPago = 'tarjeta';
 
